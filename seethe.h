@@ -91,6 +91,8 @@
 #define CRITICAL    5
 #define SILENT      6
 
+    
+#ifdef SEETHE_DISABLE //Global switch for logs. This will reduce the code footprint
 /* DEBUG LOG */
 #define debug(...) do {                                                             \
     if (LOG_LEVEL == DEBUG) {                                                       \
@@ -145,4 +147,12 @@
     }                                                                               \
 } while (0)
 
+#else //if 
+    #define debug(...)
+    #define info(...)
+    #define notice(...)
+    #define warning(...)
+    #define error(...) 
+    #define critical(...)
+#endif
 #endif // seethe.h
